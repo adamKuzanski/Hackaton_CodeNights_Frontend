@@ -18,6 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { UploadVideoComponent } from './upload-video/upload-video.component';
 import {MatDividerModule} from '@angular/material/divider';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatDividerModule} from '@angular/material/divider';
     ReactiveFormsModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatDividerModule
+    MatDividerModule,
+    NgbModule
   ],
   providers: [
     authInterceptorProviders
