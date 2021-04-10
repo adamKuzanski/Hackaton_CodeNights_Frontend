@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {StatisticsService} from '../_services/statistics.service';
 
 @Component({
   selector: 'app-video-stats',
@@ -11,10 +12,15 @@ export class VideoStatsComponent implements OnInit {
   @Input() videoName: string;
   @Input() modal: NgbModalRef;
 
-  constructor() {
+  data = null;
+
+  constructor(public stats: StatisticsService) {
   }
 
   ngOnInit(): void {
+    this.stats.getStats(this.videoName).subscribe(value => {
+      this.data = value;
+    });
   }
 
 }

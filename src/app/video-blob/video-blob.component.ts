@@ -11,13 +11,20 @@ export class VideoBlobComponent implements OnInit {
 
   @Input() videoName: string;
 
-  constructor( private modalService: NgbModal ) { }
+  constructor(private modalService: NgbModal) {
+  }
 
   ngOnInit(): void {
   }
 
   showStats(): void {
-    const modalRef = this.modalService.open(VideoStatsComponent, {size: 'xl', centered: true});
+    const modalRef = this.modalService.open(
+      VideoStatsComponent,
+      {
+        size: 'xl',
+        centered: true,
+        scrollable: true
+      });
     modalRef.componentInstance.videoName = this.videoName;
     modalRef.componentInstance.modal = modalRef;
   }
