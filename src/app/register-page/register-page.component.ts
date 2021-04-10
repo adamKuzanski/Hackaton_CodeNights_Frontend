@@ -1,4 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+function passwordMatchValidator(frm: FormGroup): { mismatch: boolean } {
+  const password = frm.get('password').value;
+  const passwordConfirm = frm.get('passwordConfirm').value;
+
+  if (passwordConfirm === '') {
+    return null;
+  }
+
+  return password === passwordConfirm ? null : {mismatch: true};
+}
 
 @Component({
   selector: 'app-register-page',
@@ -7,9 +19,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterPageComponent implements OnInit {
 
-  constructor() { }
+  registerForm: FormGroup;
+  passwordHide = true;
+  passwordConfirmHide = true;
+
+  constructor(private formBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
+    this.registerForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      passwordGroup: this.formBuilder.group({
+        password: ['', Validators.required],
+        passwordConfirm: ['', [Validators.required]]
+      }, {
+        validators: passwordMatchValidator
+      }),
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required]
+    });
+  }
+
+  register(): void {
+
   }
 
 }

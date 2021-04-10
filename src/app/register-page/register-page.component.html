@@ -1,1 +1,90 @@
-<p>register-page works!</p>
+<form class="container" [formGroup]="registerForm" (ngSubmit)="register()">
+
+  <mat-form-field>
+    <mat-label>Imie</mat-label>
+
+    <input matInput
+           formControlName="firstName"
+           placeholder="Imie">
+
+    <mat-error *ngIf="registerForm.get('firstName').errors?.required"> Imie jest wymagane</mat-error>
+
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Nazwisko</mat-label>
+    <input matInput
+           formControlName="lastName"
+           placeholder="Nazwisko">
+    <mat-error *ngIf="registerForm.get('lastName').errors?.required"> Nazwisko jest wymagane</mat-error>
+
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Adres email</mat-label>
+
+    <input matInput
+           formControlName="email"
+           placeholder="test@poczta.pl">
+
+    <mat-error *ngIf="registerForm.get('email').errors?.required"> Nie wpisano adresu email !</mat-error>
+    <mat-error *ngIf="registerForm.get('email').errors?.email"> Nie wpisano poprawnego adres email !</mat-error>
+
+  </mat-form-field>
+
+  <div class="password-container" formGroupName="passwordGroup">
+
+    <mat-form-field>
+      <mat-label>Hasło</mat-label>
+      <input matInput
+             [type]="passwordHide ? 'password' : 'text'"
+             formControlName="password"
+             required>
+
+      <button mat-icon-button matSuffix type="button"
+              (click)="passwordHide = !passwordHide"
+              [attr.aria-label]="'Ukryj hasło'"
+              [attr.aria-pressed]="passwordHide">
+        <mat-icon> {{ passwordHide ? 'visibility_off' : 'visibility' }} </mat-icon>
+      </button>
+
+      <mat-error *ngIf="registerForm.get('passwordGroup.password').errors?.required">
+        Wprowadz haslo !
+      </mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Potwierdz haslo</mat-label>
+      <input matInput
+             [type]="passwordConfirmHide ? 'password' : 'text'"
+             formControlName="passwordConfirm"
+             required>
+
+      <button mat-icon-button matSuffix type="button"
+              (click)="passwordConfirmHide = !passwordConfirmHide"
+              [attr.aria-label]="'Ukryj hasło'"
+              [attr.aria-pressed]="passwordConfirmHide">
+        <mat-icon> {{ passwordConfirmHide ? 'visibility_off' : 'visibility' }} </mat-icon>
+      </button>
+
+      <mat-error *ngIf="registerForm.get('passwordGroup.passwordConfirm').errors?.required">
+        Wprowadz haslo !
+      </mat-error>
+    </mat-form-field>
+
+    <mat-error *ngIf="registerForm.get('passwordGroup').errors?.mismatch">
+      Wprowadzone hasła róznią się od siebie !
+    </mat-error>
+
+
+  </div>
+
+
+  <button class="button-register" mat-flat-button color="warn" type="submit"> Zarejestruj</button>
+  <!--  <mat-error  *ngIf="authErrors"> {{ authErrors.message }} </mat-error>-->
+
+
+</form>
+
+
