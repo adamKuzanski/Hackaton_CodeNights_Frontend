@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserRegister} from '../../Models/UserRegister';
 
 function passwordMatchValidator(frm: FormGroup): { mismatch: boolean } {
   const password = frm.get('password').value;
@@ -41,6 +42,16 @@ export class RegisterPageComponent implements OnInit {
   }
 
   register(): void {
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    const model: UserRegister = {
+      firstname: this.registerForm.get('firstname').value,
+      lastname: this.registerForm.get('lastname').value,
+      email: this.registerForm.get('email').value,
+      password: this.registerForm.get('password').value,
+    };
 
   }
 
