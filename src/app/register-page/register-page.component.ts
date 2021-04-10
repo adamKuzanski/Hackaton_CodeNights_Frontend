@@ -22,6 +22,7 @@ function passwordMatchValidator(frm: FormGroup): { mismatch: boolean } {
 })
 export class RegisterPageComponent implements OnInit {
 
+  authErrors;
   registerForm: FormGroup;
   passwordHide = true;
   passwordConfirmHide = true;
@@ -57,10 +58,13 @@ export class RegisterPageComponent implements OnInit {
       password: this.registerForm.get('passwordGroup.password').value,
     };
 
-    this.authService.register(model).subscribe(value => {
-      // TODO validate & login
-      console.warn('Not implemented');
-    });
+    this.authService.register(model)
+      .subscribe(value => {
+        // TODO validate & login
+        this.tokenService.saveUser(value);
+      }, error => {
+        console.log(error);
+      });
   }
 
 }
