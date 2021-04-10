@@ -20,6 +20,8 @@ import { UploadVideoComponent } from './upload-video/upload-video.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatCardModule} from '@angular/material/card';
+import { VideoBlobComponent } from './video-blob/video-blob.component';
+import { VideoStatsComponent } from './video-stats/video-stats.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import {MatCardModule} from '@angular/material/card';
     RegisterPageComponent,
     DashboardComponent,
     UploadVideoComponent,
+    VideoBlobComponent,
+    VideoStatsComponent,
   ],
   imports: [
     BrowserModule,

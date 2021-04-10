@@ -1,8 +1,5 @@
 <div class="container">
-
-  <video *ngIf="url" controls width="200" autoplay>
-    <source [src]="url">
-  </video>
+  <video [src]="url" *ngIf="url" width="100%" controls></video> <br />
 
   <button type="button"
           mat-raised-button
@@ -20,10 +17,6 @@
          type="file"
          (change)="onFileSelected($event.target.files)"
          placeholder="Wyślij plik video"
-         accept=".mkv">
-
-  <!--<pre>-->
-  <!--  {{ file?.name | json }}-->
-  <!--</pre>-->
+         accept=".mp4">
 
 </div>
