@@ -1,15 +1,26 @@
-<button type="button"
-        mat-raised-button
-        color="primary"
-        (click)="fileInput.click()">Wybierz plik video</button>
+<div class="container">
+  <video [src]="url" *ngIf="url" height="200" controls></video> <br />
 
-<input hidden
-       #fileInput
-       type="file"
-       (change)="onFileSelected($event.target.files)"
-       placeholder="Wyślij plik video"
-       accept=".pdf,.doc,.docx">
+  <button type="button"
+          mat-raised-button
+          color="primary"
+          (click)="fileInput.click()">Wybierz plik video</button>
 
-<pre>
-  {{ file?.name | json }}
-</pre>
+  <button type="button"
+          mat-raised-button
+          color="warn"
+          (click)="onSubmit()"
+  >Wyślij</button>
+
+  <input hidden
+         #fileInput
+         type="file"
+         (change)="onFileSelected($event.target.files)"
+         placeholder="Wyślij plik video"
+         accept=".mkv">
+
+  <!--<pre>-->
+  <!--  {{ file?.name | json }}-->
+  <!--</pre>-->
+
+</div>

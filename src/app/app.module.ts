@@ -19,6 +19,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { UploadVideoComponent } from './upload-video/upload-video.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     MatSnackBarModule,
     MatDividerModule,
-    NgbModule
+    NgbModule,
+    MatCardModule
   ],
   providers: [
     authInterceptorProviders
