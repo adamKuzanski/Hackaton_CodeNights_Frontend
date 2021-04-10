@@ -4,11 +4,6 @@ import {Observable} from 'rxjs';
 
 const AUTH_API = 'https://codenight-invigilationapp.azurewebsites.net/api/movie/';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'multipart/form-data',
-  }),
-};
 
 @Injectable({
   providedIn: 'root'
@@ -21,13 +16,9 @@ export class FileUploadService {
 
   uploadFile(file: File): Observable<string> {
     const formData: FormData = new FormData();
-    formData.set('file', file);
+    formData.set('file', file, file.name );
     // formData.append('file', file, file.name);
 
-    return this.http.post<string>(AUTH_API + 'uploadMovie', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    });
+    return this.http.post<string>(AUTH_API + 'uploadMovie', formData, {});
   }
 }

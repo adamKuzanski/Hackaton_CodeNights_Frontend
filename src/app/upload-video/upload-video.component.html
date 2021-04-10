@@ -1,5 +1,8 @@
 <div class="container">
-  <video [src]="url" *ngIf="url" height="200" controls></video> <br />
+
+  <video *ngIf="url" controls width="200" autoplay>
+    <source [src]="url">
+  </video>
 
   <button type="button"
           mat-raised-button
