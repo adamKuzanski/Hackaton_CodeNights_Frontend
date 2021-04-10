@@ -4,6 +4,7 @@ import {AuthService} from '../_services/auth.service';
 import {UserModel} from '../_models/UserModel';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
 
 function passwordMatchValidator(frm: FormGroup): { mismatch: boolean } {
   const password = frm.get('password').value;
@@ -31,10 +32,15 @@ export class RegisterPageComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
               private tokenService: TokenStorageService,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private router: Router) {
   }
 
   ngOnInit(): void {
+    if (!!this.tokenService.getUser()) {
+      this.router.navigate(['/dashboard']);
+    }
+
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       passwordGroup: this.formBuilder.group({
@@ -62,11 +68,11 @@ export class RegisterPageComponent implements OnInit {
 
     this.authService.register(model)
       .subscribe(value => {
-        this.snackBar.open(`Pomyslnie zalogowano jako ${value.email}`, 'ok!', { duration: 2000 });
+        this.snackBar.open(`Pomyslnie zalogowano jako ${value.email}`, 'ok!', {duration: 2000});
         this.tokenService.saveUser(value);
       }, error => {
-        this.snackBar.open(error, 'Zamknij', { duration: 3000 });
-      });
+        this.snackBar.open(error, 'Zamknij', {duration: 3000});
+      }, () => this.router.navigate(['/dashboard']));
   }
 
 }

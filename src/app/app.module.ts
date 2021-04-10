@@ -23,7 +23,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     HomeComponent,
     LoginPageComponent,
     RegisterPageComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

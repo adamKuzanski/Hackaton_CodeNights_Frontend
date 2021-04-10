@@ -4,6 +4,7 @@ import {AuthService} from '../_services/auth.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {UserModel} from '../_models/UserModel';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -20,10 +21,15 @@ export class LoginPageComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
               private tokenService: TokenStorageService,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private router: Router) {
   }
 
   ngOnInit(): void {
+    if (!!this.tokenService.getUser()) {
+      this.router.navigate(['/dashboard']);
+    }
+
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -47,7 +53,7 @@ export class LoginPageComponent implements OnInit {
         this.tokenService.saveUser(value);
       }, error => {
         this.snackBar.open(error, 'Zamknij', { duration: 3000 });
-      });
+      }, () => this.router.navigate(['/dashboard']));
   }
 
 }
