@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserRegister} from '../../models/UserRegister';
+import {UserRegistrationFormModel} from '../_models/UserRegistrationFormModel';
+import {AuthService} from '../_services/auth.service';
+import {UserModel} from '../_models/UserModel';
 
 function passwordMatchValidator(frm: FormGroup): { mismatch: boolean } {
   const password = frm.get('password').value;
@@ -24,7 +26,7 @@ export class RegisterPageComponent implements OnInit {
   passwordHide = true;
   passwordConfirmHide = true;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private auth: AuthService) {
   }
 
   ngOnInit(): void {
@@ -46,13 +48,14 @@ export class RegisterPageComponent implements OnInit {
       return;
     }
 
-    const model: UserRegister = {
-      firstname: this.registerForm.get('firstname').value,
-      lastname: this.registerForm.get('lastname').value,
+    const model: UserModel = {
+      firstName: this.registerForm.get('firstName').value,
+      lastName: this.registerForm.get('lastName').value,
       email: this.registerForm.get('email').value,
-      password: this.registerForm.get('password').value,
+      password: this.registerForm.get('passwordGroup.password').value,
     };
 
+    this.auth.register(model);
   }
 
 }
