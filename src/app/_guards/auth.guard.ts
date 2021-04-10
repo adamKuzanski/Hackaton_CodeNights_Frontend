@@ -9,7 +9,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private tokenService: TokenStorageService, private snackBar: MatSnackBar) {
+  constructor(private tokenService: TokenStorageService,
+              private snackBar: MatSnackBar) {
   }
 
   canActivate(

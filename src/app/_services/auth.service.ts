@@ -25,4 +25,12 @@ export class AuthService {
     );
   }
 
+  login(user: UserModel): Observable<UserModel> {
+    return this.http.post<UserModel>(
+      AUTH_API + 'login',
+      JSON.stringify(user),
+      httpOptions
+    );
+  }
+
 }

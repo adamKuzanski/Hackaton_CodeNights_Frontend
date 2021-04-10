@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../_services/auth.service';
 import {UserModel} from '../_models/UserModel';
 import {TokenStorageService} from '../_services/token-storage.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 function passwordMatchValidator(frm: FormGroup): { mismatch: boolean } {
   const password = frm.get('password').value;
@@ -29,7 +30,8 @@ export class RegisterPageComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
-              private tokenService: TokenStorageService) {
+              private tokenService: TokenStorageService,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -60,10 +62,10 @@ export class RegisterPageComponent implements OnInit {
 
     this.authService.register(model)
       .subscribe(value => {
-        // TODO validate & login
+        this.snackBar.open(`Pomyslnie zalogowano jako ${value.email}`, 'ok!', { duration: 2000 });
         this.tokenService.saveUser(value);
       }, error => {
-        console.log(error);
+        this.snackBar.open(error, 'Zamknij', { duration: 3000 });
       });
   }
 
