@@ -17,6 +17,7 @@
   <button routerLink="" mat-fab color="warn" aria-label="Strona Główna">
     <mat-icon>home</mat-icon>
   </button>
+  <a mat-button color="warn" routerLink="dashboard">Dashboard</a>
   <a mat-button color="warn" routerLink="login" *ngIf="!tokenService.getUser()">Logowanie</a>
   <a mat-button color="warn" routerLink="register" *ngIf="!tokenService.getUser()">Rejestracja</a>
   <a mat-button color="warn" (click)="tokenService.signOut()" *ngIf="tokenService.getUser()">Wyloguj</a>

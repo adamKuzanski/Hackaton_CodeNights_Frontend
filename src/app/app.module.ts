@@ -14,13 +14,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import {authInterceptorProviders} from './_helpers/auth.interceptor';
     MatInputModule,
     ReactiveFormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [
     authInterceptorProviders
