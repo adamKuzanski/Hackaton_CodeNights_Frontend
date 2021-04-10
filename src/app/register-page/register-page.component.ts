@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserRegister} from '../../Models/UserRegister';
+import {UserRegister} from '../../models/UserRegister';
 
 function passwordMatchValidator(frm: FormGroup): { mismatch: boolean } {
   const password = frm.get('password').value;
