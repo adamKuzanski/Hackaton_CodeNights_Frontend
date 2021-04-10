@@ -9,9 +9,10 @@
 <header id="logo">
   <h1> Inviligation App </h1>
 </header>
-<pre>
-  {{ tokenService.getUser() | json }}
-</pre>
+
+<!--<pre>-->
+<!--  {{ tokenService.getUser() | json }}-->
+<!--</pre>-->
 
 <nav id="navLinks">
   <button routerLink="" mat-fab color="warn" aria-label="Strona Główna">
@@ -22,5 +23,7 @@
   <a mat-button color="warn" routerLink="register" *ngIf="!tokenService.getUser()">Rejestracja</a>
   <a mat-button color="warn" (click)="tokenService.signOut()" *ngIf="tokenService.getUser()">Wyloguj</a>
 </nav>
+
+<mat-divider></mat-divider>
 
 <router-outlet></router-outlet>

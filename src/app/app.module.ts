@@ -16,6 +16,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { UploadVideoComponent } from './upload-video/upload-video.component';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     LoginPageComponent,
     RegisterPageComponent,
     DashboardComponent,
+    UploadVideoComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ReactiveFormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDividerModule
   ],
   providers: [
     authInterceptorProviders
