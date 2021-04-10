@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserRegistrationFormModel} from '../_models/UserRegistrationFormModel';
 import {AuthService} from '../_services/auth.service';
 import {UserModel} from '../_models/UserModel';
+import {TokenStorageService} from '../_services/token-storage.service';
 
 function passwordMatchValidator(frm: FormGroup): { mismatch: boolean } {
   const password = frm.get('password').value;
@@ -26,7 +26,9 @@ export class RegisterPageComponent implements OnInit {
   passwordHide = true;
   passwordConfirmHide = true;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService) {
+  constructor(private formBuilder: FormBuilder,
+              private authService: AuthService,
+              private tokenService: TokenStorageService) {
   }
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class RegisterPageComponent implements OnInit {
     });
   }
 
-  register(): void {
+  onSubmit(): void {
     if (this.registerForm.invalid) {
       return;
     }
@@ -55,7 +57,10 @@ export class RegisterPageComponent implements OnInit {
       password: this.registerForm.get('passwordGroup.password').value,
     };
 
-    this.auth.register(model);
+    this.authService.register(model).subscribe(value => {
+      // TODO validate & login
+      console.warn('Not implemented');
+    });
   }
 
 }
