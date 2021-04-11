@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router} from '@angular/router';
+import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
 import {TokenStorageService} from '../_services/token-storage.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -10,8 +10,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class AuthGuard implements CanActivate {
 
   constructor(private tokenService: TokenStorageService,
-              private snackBar: MatSnackBar,
-              private router: Router) {
+              private snackBar: MatSnackBar) {
   }
 
   canActivate(
@@ -23,7 +22,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    this.snackBar.open('Nie jesteś zalogowany !', 'zamknij', { duration: 5000 });
+    this.snackBar.open('Nie jesteś zalogowany !', 'zamknij', {duration: 5000});
     return false;
   }
 

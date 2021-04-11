@@ -10,6 +10,7 @@ import {VideoStatsComponent} from '../video-stats/video-stats.component';
 export class VideoBlobComponent implements OnInit {
 
   @Input() videoName: string;
+  public visible = true;
 
   constructor(private modalService: NgbModal) {
   }

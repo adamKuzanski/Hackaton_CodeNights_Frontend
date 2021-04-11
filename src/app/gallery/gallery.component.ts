@@ -74,7 +74,8 @@ export class GalleryComponent implements OnInit {
         '/assets/Zła Maseczka/6.PNG',
         '/assets/Zła Maseczka/7.PNG',
         '/assets/Zła Maseczka/8.PNG',
-        '/assets/Zła Maseczka/9.PNG',]
+        '/assets/Zła Maseczka/9.PNG',
+      ]
     },
   ];
 

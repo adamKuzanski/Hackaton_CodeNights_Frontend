@@ -16,7 +16,6 @@ export class LoginPageComponent implements OnInit {
   authErrors;
   loginForm: FormGroup;
   passwordHide = true;
-  passwordConfirmHide = true;
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
@@ -46,7 +45,7 @@ export class LoginPageComponent implements OnInit {
       password: this.loginForm.get('password').value,
     };
 
-    this.authService.register(model)
+    this.authService.login(model)
       .subscribe(value => {
         // TODO validate & login
         this.snackBar.open(`Pomyslnie zalogowano jako ${value.email}`, 'ok!', { duration: 2000 });

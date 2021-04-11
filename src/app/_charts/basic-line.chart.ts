@@ -4,10 +4,6 @@ export class BasicLineChart extends Chart {
 
   constructor(title: string) {
     super({
-      // xAxis: {
-      //   zoomEnabled: true,
-      // },
-
       title: {
         text: title
       },

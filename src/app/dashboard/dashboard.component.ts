@@ -8,7 +8,7 @@ import {FileUploadService} from '../_services/file-upload.service';
 })
 export class DashboardComponent implements OnInit {
 
-  public blobs = [];
+  public blobs: {videoName: string}[] = [];
 
   constructor(private fileService: FileUploadService) {
   }

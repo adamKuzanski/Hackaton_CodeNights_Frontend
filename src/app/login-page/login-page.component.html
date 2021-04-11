@@ -4,6 +4,7 @@
     <mat-form-field>
       <mat-label>Adres email</mat-label>
 
+      <!--suppress HtmlFormInputWithoutLabel -->
       <input matInput
              formControlName="email"
              placeholder="test@poczta.pl">
@@ -16,6 +17,7 @@
 
     <mat-form-field>
       <mat-label>Hasło</mat-label>
+      <!--suppress HtmlFormInputWithoutLabel -->
       <input matInput
              [type]="passwordHide ? 'password' : 'text'"
              formControlName="password"
@@ -40,7 +42,5 @@
 
 
   </form>
-
-
 
 </div>
