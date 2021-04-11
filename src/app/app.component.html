@@ -6,25 +6,58 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<header id="logo">
-  <h1> Inviligation App </h1>
-</header>
-
 <!--<pre>-->
 <!--  {{ tokenService.getUser() | json }}-->
 <!--</pre>-->
+<header class="container-fluid">
+  <h1 id="logo">Invigilation App</h1>
 
-<div class="container">
-  <nav id="navLinks">
-    <button routerLink="" mat-fab color="warn" aria-label="Strona Główna">
-      <mat-icon>home</mat-icon>
-    </button>
-    <a mat-button color="warn" routerLink="dashboard" *ngIf="tokenService.getUser()">Dashboard</a>
-    <a mat-button color="warn" routerLink="login" *ngIf="!tokenService.getUser()">Logowanie</a>
-    <a mat-button color="warn" routerLink="register" *ngIf="!tokenService.getUser()">Rejestracja</a>
-    <a mat-button color="warn" (click)="tokenService.signOut()" *ngIf="tokenService.getUser()">Wyloguj</a>
-  </nav>
-</div>
+  <div class="container">
+    <nav class="navbar navbar-light navbar-expand-lg bg-light">
+      <a class="navbar-brand" routerLink="">
+        <img src="/assets/logo.png" width="32" height="32" class="d-inline-block align-top" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <!--  <nav id="navLinks">-->
+          <!--    <button routerLink="" mat-fab color="warn" aria-label="Strona Główna">-->
+          <!--      <mat-icon>home</mat-icon>-->
+          <!--    </button>-->
+          <!--    <a mat-button color="warn" routerLink="dashboard" *ngIf="tokenService.getUser()">Dashboard</a>-->
+          <!--    <a mat-button color="warn" routerLink="login" *ngIf="!tokenService.getUser()">Logowanie</a>-->
+          <!--    <a mat-button color="warn" routerLink="register" *ngIf="!tokenService.getUser()">Rejestracja</a>-->
+          <!--    <a mat-button color="warn" (click)="tokenService.signOut()" *ngIf="tokenService.getUser()">Wyloguj</a>-->
+          <!--  </nav>-->
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="dashboard" *ngIf="tokenService.getUser()">Dashboard</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " routerLink="login" *ngIf="!tokenService.getUser()">Logowanie</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="register" *ngIf="!tokenService.getUser()" >Rejestracja</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="tokenService.signOut()" *ngIf="tokenService.getUser()" >Wyloguj</a>
+          </li>
+
+        </ul>
+      </div>
+
+    </nav>
+
+  </div>
+</header>
+
+
 
 <mat-divider></mat-divider>
 
