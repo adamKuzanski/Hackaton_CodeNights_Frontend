@@ -23,6 +23,7 @@ import {MatCardModule} from '@angular/material/card';
 import { VideoBlobComponent } from './video-blob/video-blob.component';
 import { VideoStatsComponent } from './video-stats/video-stats.component';
 import {ChartModule} from 'angular-highcharts';
+import { GalleryComponent } from './gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {ChartModule} from 'angular-highcharts';
     UploadVideoComponent,
     VideoBlobComponent,
     VideoStatsComponent,
+    GalleryComponent,
   ],
   imports: [
     BrowserModule,

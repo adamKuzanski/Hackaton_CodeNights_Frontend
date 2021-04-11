@@ -34,6 +34,9 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="dashboard" *ngIf="tokenService.getUser()">Dashboard</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="tagged-photos" *ngIf="tokenService.getUser()">Otagowane Zdjęcia</a>
+          </li>
 
           <li class="nav-item">
             <a class="nav-link " routerLink="login" *ngIf="!tokenService.getUser()">Logowanie</a>
