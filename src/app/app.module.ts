@@ -22,6 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatCardModule} from '@angular/material/card';
 import { VideoBlobComponent } from './video-blob/video-blob.component';
 import { VideoStatsComponent } from './video-stats/video-stats.component';
+import {ChartModule} from 'angular-highcharts';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { VideoStatsComponent } from './video-stats/video-stats.component';
     MatSnackBarModule,
     MatDividerModule,
     NgbModule,
-    MatCardModule
+    MatCardModule,
+    ChartModule,
   ],
   providers: [
     authInterceptorProviders

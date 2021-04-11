@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FileUploadService} from '../_services/file-upload.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,19 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  public blobs = [
-    {videoName: 'Lodz Plac Wolnosci'},
-    {videoName: 'Lodz Piotrkowska - Narutowicza'},
-    {videoName: 'Lodz Piotrkowska - Traugutta'},
-    {videoName: 'Lodz Piotrkowska - aleja Leona Schillera'},
-    {videoName: 'Lodz Piotrkowska - Nawrot'},
-    {videoName: 'Lodz Piotrkowska - Struga'},
-    {videoName: 'Lodz Piotrkowska - Kościuszki'},
-  ];
+  public blobs = [];
 
-  constructor() { }
+  constructor(private fileService: FileUploadService) {
+  }
 
   ngOnInit(): void {
+    this.fileService.getAll().subscribe(data => {
+      data.forEach(value => {
+        this.blobs.push({
+          videoName: value
+        });
+      });
+    });
   }
 
 }

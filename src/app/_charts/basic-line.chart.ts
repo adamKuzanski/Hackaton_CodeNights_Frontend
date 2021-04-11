@@ -1,9 +1,12 @@
-import {Chart} from 'highcharts';
+import {Chart} from 'angular-highcharts';
 
 export class BasicLineChart extends Chart {
 
   constructor(title: string) {
     super({
+      // xAxis: {
+      //   zoomEnabled: true,
+      // },
       title: {
         text: title
       },
@@ -22,5 +25,17 @@ export class BasicLineChart extends Chart {
     });
   }
 
+  pushSeries(seriesName: string, data): void {
+    this.addSeries({
+      name: seriesName,
+      type: 'line',
+      data
+    }, true, true);
+    this.ref.reflow();
+  }
+
+  clearSeries(): void {
+    this.ref.series = [];
+  }
 
 }

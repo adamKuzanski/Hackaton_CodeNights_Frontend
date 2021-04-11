@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 const API = 'https://codenight-invigilationapp.azurewebsites.net/api/movie/';
@@ -20,5 +20,8 @@ export class FileUploadService {
     // formData.append('file', file, file.name);
 
     return this.http.post<string>(API + 'uploadMovie', formData, {});
+  }
+  getAll(): Observable<string[]> {
+    return this.http.get<string[]>(API + 'allNames');
   }
 }

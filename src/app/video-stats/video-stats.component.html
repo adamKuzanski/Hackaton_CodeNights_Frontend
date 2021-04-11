@@ -1,3 +1,4 @@
+
 <div class="modal-header">
   <h4 class="modal-title"> {{ videoName }} </h4>
   <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -5,10 +6,13 @@
   </button>
 </div>
 <div class="modal-body">
+  <div class="mychart" [chart]="chartPeople"></div>
+  <div class="mychart" [chart]="chartVehicles"></div>
 
-  <pre>
-    {{ data | json }}
-  </pre>
+
+<!--  <pre>-->
+<!--    {{ data | json }}-->
+<!--  </pre>-->
 
 </div>
 <div class="modal-footer">
