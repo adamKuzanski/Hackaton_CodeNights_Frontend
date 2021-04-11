@@ -7,6 +7,7 @@ export class BasicLineChart extends Chart {
       // xAxis: {
       //   zoomEnabled: true,
       // },
+
       title: {
         text: title
       },
@@ -28,7 +29,7 @@ export class BasicLineChart extends Chart {
   pushSeries(seriesName: string, data): void {
     this.addSeries({
       name: seriesName,
-      type: 'line',
+      type: 'spline',
       data
     }, true, true);
     this.ref.reflow();

@@ -1,41 +1,16 @@
 <div class="container">
   <div class="input-container">
-    <select class="custom-select" id="cars" name="cars">
-      <option value="volvo">Dobra maseczka</option>
-      <option value="saab">Zla maseczka</option>
-      <option value="fiat">Czlowiek tylem</option>
-      <option value="audi">Auto</option>
-      <option value="audi">Rower</option>
+    <select class="custom-select" id="cars" name="cars" [selectedIndex]="selected" (change)="selected = $event.target.value">
+      <option value="0">Auto</option>
+      <option value="1">Rower</option>
+      <option value="2">Czlowiek tylem</option>
+      <option value="3">Dobra maseczka</option>
+      <option value="4">Zla maseczka</option>
     </select>
   </div>
   <div class="blob-container">
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="blob"></div>
+    <div class="blob" *ngFor="let x of urls[selected].data">
+      <img [src]="x" alt="pic">
+    </div>
   </div>
 </div>
