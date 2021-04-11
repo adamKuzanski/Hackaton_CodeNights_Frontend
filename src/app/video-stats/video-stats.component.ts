@@ -12,6 +12,7 @@ import {VideoStatsModel} from '../_models/VideoStatsModel';
 export class VideoStatsComponent implements OnInit {
 
   @Input() first: boolean;
+  status = 'Ladowanie...';
 
   constructor(public stats: StatisticsService) {
   }
@@ -19,53 +20,67 @@ export class VideoStatsComponent implements OnInit {
   @Input() videoName: string;
   @Input() modal: NgbModalRef;
 
-  chartPeople = new BasicLineChart(`Statistics of People`);
-  chartVehicles = new BasicLineChart(`Statistics of Vehicles`);
+  chartPeople: BasicLineChart;
+  chartVehicles: BasicLineChart;
 
   ngOnInit(): void {
 
     let data: VideoStatsModel[];
-    const nbOfPeopleOnImage = new Array<number>();
-    const nbOfCars = new Array<number>();
-    const nbOfCyclers = new Array<number>();
-    const nbOfPeopleWithMask = new Array<number>();
-    const nbOfPeopleWithOutMask = new Array<number>();
+    const nbOfPeopleOnImage = new Array<any>();
+    const nbOfCars = new Array<any>();
+    const nbOfCyclers = new Array<any>();
+    const nbOfPeopleWithMask = new Array<any>();
+    const nbOfPeopleWithOutMask = new Array<any>();
 
     if (this.first) {
       this.stats.getStats(this.videoName).subscribe(value => {
         data = value;
 
-        data.forEach((value1) => {
-          nbOfPeopleOnImage.push(value1.nbOfPeopleOnImage);
-          nbOfCars.push(value1.nbOfCars);
-          nbOfCyclers.push(value1.nbOfCyclers);
-          nbOfPeopleWithMask.push(value1.nbOfPeopleWithMask);
-          nbOfPeopleWithOutMask.push(value1.nbOfPeopleWithOutMask);
+        this.chartPeople = new BasicLineChart(`Statistics of People`);
+        this.chartVehicles = new BasicLineChart(`Statistics of Vehicles`);
+
+        data.forEach((value1, index) => {
+          nbOfPeopleOnImage.push([index * 2, value1.nbOfPeopleOnImage]);
+          nbOfCars.push([index * 2, value1.nbOfCars]);
+          nbOfCyclers.push([index * 2, value1.nbOfCyclers]);
+          nbOfPeopleWithMask.push([index * 2, value1.nbOfPeopleWithMask]);
+          nbOfPeopleWithOutMask.push([index * 2, value1.nbOfPeopleWithOutMask]);
         });
 
-        this.chartPeople.pushSeries('Osoby', nbOfPeopleOnImage);
-        this.chartPeople.pushSeries('Osoby w masce', nbOfPeopleWithMask);
-        this.chartPeople.pushSeries('Osoby bez maski', nbOfPeopleWithOutMask);
-        this.chartVehicles.pushSeries('Samochody', nbOfCars);
-        this.chartVehicles.pushSeries('Rowery', nbOfCyclers);
+        setTimeout(() => {
+          this.chartPeople.pushSeries('Osoby', nbOfPeopleOnImage);
+
+          this.chartPeople.pushSeries('Osoby w masce', nbOfPeopleWithMask);
+          this.chartPeople.pushSeries('Osoby bez maski', nbOfPeopleWithOutMask);
+          this.chartVehicles.pushSeries('Samochody', nbOfCars);
+          this.chartVehicles.pushSeries('Rowery', nbOfCyclers);
+          this.status = '';
+        }, 500);
       });
     } else {
       this.stats.getStatsRand(this.videoName).subscribe(value => {
         data = value;
 
-        data.forEach((value1) => {
-          nbOfPeopleOnImage.push(value1.nbOfPeopleOnImage);
-          nbOfCars.push(value1.nbOfCars);
-          nbOfCyclers.push(value1.nbOfCyclers);
-          nbOfPeopleWithMask.push(value1.nbOfPeopleWithMask);
-          nbOfPeopleWithOutMask.push(value1.nbOfPeopleWithOutMask);
+        this.chartPeople = new BasicLineChart(`Statistics of People`);
+        this.chartVehicles = new BasicLineChart(`Statistics of Vehicles`);
+
+        data.forEach((value1, index) => {
+          nbOfPeopleOnImage.push([index * 2, value1.nbOfPeopleOnImage]);
+          nbOfCars.push([index * 2, value1.nbOfCars]);
+          nbOfCyclers.push([index * 2, value1.nbOfCyclers]);
+          nbOfPeopleWithMask.push([index * 2, value1.nbOfPeopleWithMask]);
+          nbOfPeopleWithOutMask.push([index * 2, value1.nbOfPeopleWithOutMask]);
         });
 
-        this.chartPeople.pushSeries('Osoby', nbOfPeopleOnImage);
-        this.chartPeople.pushSeries('Osoby w masce', nbOfPeopleWithMask);
-        this.chartPeople.pushSeries('Osoby bez maski', nbOfPeopleWithOutMask);
-        this.chartVehicles.pushSeries('Samochody', nbOfCars);
-        this.chartVehicles.pushSeries('Rowery', nbOfCyclers);
+        setTimeout(() => {
+          this.chartPeople.pushSeries('Osoby', nbOfPeopleOnImage);
+
+          this.chartPeople.pushSeries('Osoby w masce', nbOfPeopleWithMask);
+          this.chartPeople.pushSeries('Osoby bez maski', nbOfPeopleWithOutMask);
+          this.chartVehicles.pushSeries('Samochody', nbOfCars);
+          this.chartVehicles.pushSeries('Rowery', nbOfCyclers);
+          this.status = '';
+        }, 500);
       });
     }
 

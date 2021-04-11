@@ -4,6 +4,9 @@ export class BasicLineChart extends Chart {
 
   constructor(title: string) {
     super({
+      xAxis: {
+        tickInterval: 2
+      },
       title: {
         text: title
       },

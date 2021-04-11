@@ -3,14 +3,15 @@
 
   <button type="button"
           mat-raised-button
-          color="primary"
+          color="warn"
           (click)="fileInput.click()">Wybierz plik video</button>
 
   <button type="button"
           mat-raised-button
-          color="warn"
+          color="accent"
           (click)="onSubmit()"
   >Wyślij</button>
+  <button class="float-right" mat-raised-button color="primary" *ngIf="fileSent" (click)="showStats()"> Pokaż statystyki</button>
 
   <input hidden
          #fileInput

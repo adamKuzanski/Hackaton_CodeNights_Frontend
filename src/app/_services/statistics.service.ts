@@ -13,10 +13,7 @@ export class StatisticsService {
   constructor(private http: HttpClient) { }
 
   getStats(videoName: string): Observable<VideoStatsModel[]> {
-    const params = new HttpParams();
-    params.append('movieName', videoName);
-
-    return this.http.get<VideoStatsModel[]>(API + 'analyseMove', { params });
+    return this.http.get<VideoStatsModel[]>(API + 'analyseMove?movieName=' + videoName);
   }
 
   getStatsRand(videoName: string): Observable<VideoStatsModel[]> {
