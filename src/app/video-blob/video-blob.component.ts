@@ -9,10 +9,14 @@ import {VideoStatsComponent} from '../video-stats/video-stats.component';
 })
 export class VideoBlobComponent implements OnInit {
 
+  static i = 0;
+  i: number;
+
   @Input() videoName: string;
   public visible = true;
 
   constructor(private modalService: NgbModal) {
+    this.i = VideoBlobComponent.i++;
   }
 
   ngOnInit(): void {
@@ -26,7 +30,9 @@ export class VideoBlobComponent implements OnInit {
         centered: true,
         scrollable: true
       });
+    console.log(this.i);
     modalRef.componentInstance.videoName = this.videoName;
+    modalRef.componentInstance.first = !this.i;
     modalRef.componentInstance.modal = modalRef;
   }
 

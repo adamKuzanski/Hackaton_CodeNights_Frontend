@@ -18,4 +18,11 @@ export class StatisticsService {
 
     return this.http.get<VideoStatsModel[]>(API + 'analyseMove', { params });
   }
+
+  getStatsRand(videoName: string): Observable<VideoStatsModel[]> {
+    const params = new HttpParams();
+    params.append('movieName', videoName);
+
+    return this.http.get<VideoStatsModel[]>(API + 'analyseMoveRandom', { params });
+  }
 }
